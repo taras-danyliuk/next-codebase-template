@@ -1,0 +1,81 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// General styles
+.page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+
+// General helpers
+.flex {
+  display: flex
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+.justify-around {
+  display: flex;
+  justify-content: space-around;
+}
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+.justify-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+.align-end {
+  display: flex;
+  align-items: flex-end;
+}
+.align-stretch {
+  display: flex;
+  align-items: stretch;
+}
+
+.align-self-stretch { align-self: stretch }
+
+.no-shrink { flex-shrink: 0 }
+.flex-1 { flex: 1 }
+.flex-wrap { flex-wrap: wrap }
+
+.cursor-pointer { cursor: pointer }
+
+.text-decoration-none { text-decoration: none }
+.text-left { text-align: left }
+.text-center { text-align: center }
+.text-right { text-align: right }
+
+.w-100 { width: 100% }
+.h-100 { height: 100% }
+
+.relative { position: relative }

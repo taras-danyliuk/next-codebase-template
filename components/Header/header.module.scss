@@ -1,0 +1,18 @@
+.header {
+  background-color: darkcyan;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+.link {
+  margin: 0 10px
+}
+
+.activeLink {
+  border-bottom: 3px solid #003a98;
+}
