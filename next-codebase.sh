@@ -158,7 +158,7 @@ echo "";
 ##########################################################################################
 
 
-
+# Create project with name
 printf "$PRNAME\n" | npx create-next-app
 cd "$PRNAME"
 
@@ -166,29 +166,43 @@ rm -rf public
 rm README.md
 
 
-#curl -L https://github.com/taras-danyliuk/react-structure-template/archive/master.zip | tar zx
-#
-#cp react-structure-template-master/README.md README.md
-#cp react-structure-template-master/.eslintignore .eslintignore
-#
-#cp -rf react-structure-template-master/public public
-#cp -rf react-structure-template-master/custom-git-hooks custom-git-hooks
-#cp -rf react-structure-template-master/src src-copy
-#
-#cp src/serviceWorker.js src-copy/serviceWorker.js
-#
-#rm -rf src
-#mv src-copy src
-#
+##########################
+####### CORE PART ########
+##########################
+curl -L https://github.com/taras-danyliuk/next-codebase-template/archive/master.zip | tar zx
+
+# Clean up
+rm -rf pages
+rm -rf public
+rm -rf styles
+rm README.md
+
+# Copy files
+cp next-codebase-template-master/README.md README.md
+cp next-codebase-template-master/tsconfig.json tsconfig.json
+
+# Copy folders
+cp -rf next-codebase-template-master/assets assets
+cp -rf next-codebase-template-master/components components
+cp -rf next-codebase-template-master/helpers helpers
+cp -rf next-codebase-template-master/pages pages
+cp -rf next-codebase-template-master/public public
+cp -rf next-codebase-template-master/services services
+
+# Install additional packages
+packages=$(<next-codebase-template-master/packages.txt)
+npm i --save $packages
+
+packages_dev=$(<next-codebase-template-master/packages-dev.txt)
+npm i --save $packages_dev
+
 ## Split and modify package.json
-#node react-structure-template-master/modifyPackage.js
-#
-## Modify webpack.config.js
-#node react-structure-template-master/modifyWebpack.js
-#
-#rm -rf react-structure-template-master
-#
-#
+#node react-structure-template-master/modifyPackage.js#
+
+# Remove downloaded sources
+rm -rf react-structure-template-master
+
+
 ##########################
 #### CONDITIONAL PARTS ###
 ##########################
