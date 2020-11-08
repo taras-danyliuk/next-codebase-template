@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Axios setup
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "https://reqres.in/api/",
   headers: {
     "Accept": "application/json",
     "Content-Type": "application/json"

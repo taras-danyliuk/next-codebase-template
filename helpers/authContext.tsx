@@ -34,32 +34,38 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
   
   // Get current user by token on App start
   useEffect(() => {
-    async function loadUserFromCookies() {
-      const token = Cookies.get("token");
-      
-      if (token) {
-        api.defaults.headers.Authorization = `JWT ${token}`;
-        const { data: user } = await api.get(GET_USER_ENDPOINT);
-        if (user) setUser(user);
-      }
-      
-      setIsLoading(false);
+    const token = Cookies.get("token");
+  
+    if (token) {
+      api.defaults.headers.Authorization = `JWT ${token}`;
+      api.get<any, UserType>(GET_USER_ENDPOINT)
+        .then(data => setUser(data))
+        .catch(console.warn);
     }
-    
-    loadUserFromCookies();
+  
+    setIsLoading(false);
   }, [])
   
   
   // Methods
   const login = async (email: string, password: string) => {
-    const { data: token } = await api.post(LOGIN_USER_ENDPOINT, { email, password });
-    
-    if (token) {
-      Cookies.set("token", token, { expires: 60 });
-      api.defaults.headers.Authorization = `JWT ${token.token}`;
-      const { data: user } = await api.get(GET_USER_ENDPOINT);
-      setUser(user);
-    }
+    return new Promise(async (resolve, reject) => {
+      try {
+        const { data: token } = await api.post(LOGIN_USER_ENDPOINT, { email, password });
+  
+        if (token) {
+          Cookies.set("token", token, { expires: 60 });
+          api.defaults.headers.Authorization = `JWT ${token.token}`;
+          const { data: user } = await api.get(GET_USER_ENDPOINT);
+          setUser(user);
+          resolve(user);
+        }
+      }
+      catch(err) {
+        console.warn(err);
+        reject(err);
+      }
+    });
   }
   
   const logout = () => {
