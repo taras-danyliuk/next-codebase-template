@@ -177,17 +177,22 @@ rm -rf public
 rm -rf styles
 rm README.md
 
-# Copy files
+# Copy files from template
+cp next-codebase-template-master/babelrc .babelrc
+cp next-codebase-template-master/.env.example .env.example
+cp next-codebase-template-master/jest.config.js jest.config.js
 cp next-codebase-template-master/README.md README.md
 cp next-codebase-template-master/tsconfig.json tsconfig.json
 
-# Copy folders
+cp -rf next-codebase-template-master/__tests__ __tests__
 cp -rf next-codebase-template-master/assets assets
 cp -rf next-codebase-template-master/components components
 cp -rf next-codebase-template-master/helpers helpers
+cp -rf next-codebase-template-master/hooks hooks
 cp -rf next-codebase-template-master/pages pages
 cp -rf next-codebase-template-master/public public
 cp -rf next-codebase-template-master/services services
+cp -rf next-codebase-template-master/types types
 
 # Install additional packages
 packages=$(<next-codebase-template-master/packages.txt)

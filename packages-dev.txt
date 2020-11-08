@@ -1,1 +1,1 @@
-typescript @types/react @types/node
+typescript @types/react @types/node @testing-library/jest-dom @testing-library/react babel-jest identity-obj-proxy jest

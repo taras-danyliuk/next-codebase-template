@@ -1,5 +1,6 @@
-import styles from "./header.module.scss";
+import Link from "next/link"
 
+import styles from "./header.module.scss";
 import ActiveLink from "../ActiveLink";
 
 
@@ -8,7 +9,9 @@ export default function Header() {
     <header className={styles.header}>
       <div className="page-container">
         <div className={styles.content}>
-          LOGO
+          <Link href="/">
+            <a className={styles.logo}>LOGO</a>
+          </Link>
   
           <nav>
             <ActiveLink href="/" activeClassName={styles.activeLink}>
@@ -17,6 +20,10 @@ export default function Header() {
     
             <ActiveLink href="/profile" activeClassName={styles.activeLink}>
               <a className={styles.link}>Profile</a>
+            </ActiveLink>
+  
+            <ActiveLink href="/login" activeClassName={styles.activeLink}>
+              <a className={styles.link}>Login</a>
             </ActiveLink>
           </nav>
         </div>

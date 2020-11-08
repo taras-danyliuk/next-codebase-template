@@ -13,14 +13,14 @@ type Props = {
 
 
 const ActiveLink = ({ children, activeClassName, ...props }: Props) => {
-  const { asPath } = useRouter()
-  const child = Children.only(children)
-  const childClassName = child.props.className || ""
+  const { pathname } = useRouter();
+  const child = Children.only(children);
+  const childClassName = child.props.className || "";
   
   // pages/index.js will be matched via props.href
   // pages/about.js will be matched via props.href
   // pages/[slug].js will be matched via props.as
-  const className = asPath === props.href || asPath === props.as ?
+  const className = pathname === props.href || pathname === props.as ?
     `${childClassName} ${activeClassName}`.trim() :
     childClassName
   
